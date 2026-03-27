@@ -117,6 +117,11 @@ This setup is built on a few core ideas:
 4. **Tone affects behavior.** How you phrase instructions changes how Claude responds (see `patterns/intensity-calibration.md`).
 5. **Documentation is context.** The `docs/claude/` system gives Claude persistent memory across sessions.
 
+## Acknowledgments
+
+- The Focus Protocol was inspired by [@niclasj's Focus Harness concept](https://www.threads.com/@niclasj)
+- `/grill-me` was inspired by [Matt Pocock's grill-me skill](https://github.com/mattpocock/skills) (MIT)
+
 ## License
 
 MIT
