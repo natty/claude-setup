@@ -1,0 +1,74 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Bash(ls:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(sudo *)",
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean -fdx *)"
+    ],
+    "ask": [
+      "Bash(rm:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.command' | grep -q '\\-\\-no-verify' && echo '{\"decision\":\"block\",\"reason\":\"--no-verify is not allowed. Fix the underlying issue instead of bypassing hooks.\"}' && exit 2 || true",
+            "timeout": 5,
+            "statusMessage": "Checking for --no-verify..."
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/check-large-removal.sh",
+            "timeout": 5,
+            "statusMessage": "Checking for large removals..."
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/check-large-removal.sh",
+            "timeout": 5,
+            "statusMessage": "Checking for large removals..."
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -d \"docs/claude\" ]; then echo '{\"userMessage\": \"Before editing source files, outline your approach in plan mode or docs/claude/plans/. Before proposing a new approach or making a design decision, search docs/claude/ for prior decisions on the topic. As you work: log decisions and rejected alternatives to decisions.md, unexpected behaviors to gotchas.md. Update roadmap.md and CLAUDE.md Current Focus when status changes. Do this as it happens, not at the end. If uncertain about scope, approach, or any decision — ask the user before proceeding.\"}'; fi",
+            "timeout": 5,
+            "statusMessage": "Checking project docs..."
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/focus-check.sh",
+            "timeout": 5,
+            "statusMessage": "Checking focus..."
+          }
+        ]
+      }
+    ]
+  }
+}
