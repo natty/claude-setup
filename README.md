@@ -36,6 +36,7 @@ Drop-in skills you invoke with `/skill-name`. Copy the folder to `~/.claude/skil
 | Skill | What it does |
 |-------|-------------|
 | **eng-bot** | Staff engineer persona — investigates before acting, plans before building, stays in scope |
+| **sys-bot** | Systems architect — designs from scratch, reviews existing architectures, napkin math, right tool for the right scale |
 | **prompt-bot** | Crafts polished Claude system prompts from rough descriptions |
 | **maestro** | Orchestrates parallel work across git worktrees with file ownership and merge planning |
 | **docs-bot** | Maintains project documentation optimized for Claude consumption |
