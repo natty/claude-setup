@@ -97,13 +97,14 @@ Temporarily changes how Claude interacts without a full persona shift.
 
 Examples: `/grill-me` (interrogation mode), `/retro` (reflection mode)
 
-## Calibration Tips (Claude 4.6)
+## Calibration Tips
 
-- **Use calm, direct language.** "CRITICAL" and "YOU MUST" cause overtriggering on 4.6.
+- **Use calm, direct language.** "CRITICAL" and "YOU MUST" cause overtriggering.
 - **Don't restate global rules.** Reference the CLAUDE.md hierarchy instead.
-- **Add overengineering guardrails.** 4.6 tends to add unrequested features. Include: "Only make changes that are directly requested."
+- **Add overengineering guardrails.** Claude tends to add unrequested features. Include: "Only make changes that are directly requested."
 - **Say what TO do, not what to avoid.** "Write in clear prose" steers better than "Don't use jargon."
 - **Explain the why behind rules.** Rules with motivation produce better generalization than bare rules.
+- **No hedge language in rules.** "Consider whether," "you might want to," "feel free to" get skipped on literal-follow models. Use directives.
 
 ## Using /prompt-bot to Build Skills
 

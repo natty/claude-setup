@@ -14,15 +14,16 @@ or when the codebase feels like it needs a health check.
 Read the project's CLAUDE.md (all levels), then read:
 - `docs/claude/decisions.md` — settled decisions (do not flag these as issues)
 - `docs/claude/gotchas.md` — known quirks (do not flag documented workarounds)
-- `docs/claude/plans/` — existing extraction plans (confirm or challenge)
+- `docs/claude/plans/architecture.md` — existing extraction plans (confirm or challenge)
 
 Build a "do NOT flag" list from these docs. Intentional patterns documented
 in decisions or gotchas are not findings.
 
 ## Step 1: Identify all source files
 
-Find all source files in the project. If $ARGUMENTS is provided, scope to
-those files or directories only.
+Find all source files in the project (use the TOC manifest, package.json,
+or glob patterns as appropriate for the project type). If $ARGUMENTS is
+provided, scope to those files or directories only.
 
 ## Step 2: Audit (3 parallel agents, read-only)
 
@@ -85,11 +86,11 @@ minimize file touches — apply all changes to a given file in one pass.
   the user explicitly asks to proceed with fixes.
 - **Do not relitigate settled decisions.** If decisions.md says "X is
   intentional," it is not a finding.
-- **Confirm existing plans, don't duplicate them.** If an existing plan
+- **Confirm existing plans, don't duplicate them.** If architecture.md
   already identified an extraction, say "confirmed" — don't present it
   as a new discovery.
 - **Severity must be justified.** HIGH means "fix before building more."
   Don't inflate.
 - **Count instances.** "This pattern is repeated" is weak. "This pattern
-  appears 7 times across 3 files (auth.ts:55,67,77, users.ts:104,188)"
-  is useful.
+  appears 7 times across 3 files (settings.lua:55,67,77,121,165,213,
+  setup.lua:104,188)" is useful.

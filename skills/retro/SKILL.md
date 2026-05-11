@@ -1,7 +1,8 @@
 ---
 name: retro
-description: Quick retrospective — review what just happened and save a feedback memory so future sessions don't repeat the mistake
-disable-model-invocation: false
+description: Captures a feedback memory after something should have been handled differently. Use when invoking `/retro` to log a quick retrospective so future Claude sessions don't repeat the mistake.
+disable-model-invocation: true
+claude-md-version: 2026-05-06
 ---
 
 # Retro
@@ -14,8 +15,8 @@ Their observation: $ARGUMENTS
 
 1. If `$ARGUMENTS` is empty, ask the user one question: "What did you notice?" — then wait for their response before continuing.
 2. Review the recent conversation context — what was being worked on, what approach was taken, what went wrong or was suboptimal.
-3. Based on the user's observation, identify the root cause. Be specific — not "should have been more careful" but "should have checked the reference docs before web searching."
-4. Save a **feedback memory** to the project's memory directory:
+3. Based on the user's observation, identify the root cause. Be specific — not "should have been more careful" but "should have checked docs/claude/reference/ before web searching."
+4. Save a **feedback memory** to `~/.claude/projects/{project}/memory/`:
    - Filename: `feedback_<short_descriptive_name>.md`
    - Use the feedback memory format with frontmatter (name, description, type: feedback)
    - Lead with the rule

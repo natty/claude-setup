@@ -16,8 +16,16 @@ Check if Claude files are currently hidden or visible in this repo's git history
 
 4. If Claude files ARE currently hidden (found in exclude):
    - Remove `CLAUDE.md`, `.claude/`, and `docs/claude/` lines from `.git/info/exclude`
-   - Report: "Claude files are now VISIBLE in this repo's git history."
+   - Report exactly this:
+
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   !!! Claude files are now VISIBLE in this repo's git history. !!!
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 5. If Claude files are NOT currently hidden (not found in exclude):
    - Append `CLAUDE.md`, `.claude/`, and `docs/claude/` to `.git/info/exclude`
-   - Report: "Claude files are now HIDDEN from this repo's git history."
+   - Report exactly this:
+
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   !!! Claude files are now HIDDEN from this repo's git history. !!!
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

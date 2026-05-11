@@ -46,13 +46,16 @@ Each agent returns a list of findings with file paths, line numbers, and what it
 - Copy-pasted blocks (2+ copies = flag for extraction)
 
 **Agent 2 — Quality:**
-- Dead code, unused imports, unused variables
+- Dead code, unused imports, unused variables — **but apply Chesterton's Fence:** before flagging code as dead, understand why it was put there. Stale-looking code often encodes a real reason (historical bug, edge case, integration constraint). If the "why" isn't clear from context, flag for review rather than deletion.
 - Functions doing too many things (single responsibility violations)
 - Poor separation of concerns
 - Inconsistent naming or style
 - Redundant comments
+- Stale comments or docstrings that describe old behavior after the code was changed
+- TODO/FIXME comments that reference completed work
 - Unnecessary nesting
 - Code that would be hard to test or extend
+- Hardcoded URLs, ports, or hostnames that should be config
 
 **Agent 3 — Efficiency:**
 - Inefficient approaches where a simpler/faster one exists

@@ -33,17 +33,48 @@ If you haven't used any of these yet, start with the `examples/` folder — the 
 
 Drop-in skills you invoke with `/skill-name`. Copy the folder to `~/.claude/skills/`.
 
+**Engineering personas** — domain specialists for hands-on work:
+
 | Skill | What it does |
 |-------|-------------|
-| **eng-bot** | Staff engineer persona — investigates before acting, plans before building, stays in scope |
-| **sys-bot** | Systems architect — designs from scratch, reviews existing architectures, napkin math, right tool for the right scale |
-| **prompt-bot** | Crafts polished Claude system prompts from rough descriptions |
-| **maestro** | Orchestrates parallel work across git worktrees with file ownership and merge planning |
+| **eng-bot** | Staff engineer — investigates before acting, plans before building, stays in scope |
+| **sys-bot** | Systems architect — designs from scratch, reviews existing architectures, matches tools to scale |
+| **debug-bot** | Senior debugging engineer — root-cause analysis after failures, regressions, mystery bugs |
+| **qa-bot** | QA + test engineer — test strategy, TDD, edge-case discovery, test architecture |
+| **perf-bot** | Performance engineer — algorithmic complexity, I/O, memory, rendering, database performance |
+| **security-bot** | InfoSec generalist — appsec, prodsec, infrastructure, cloud security, threat modeling |
+| **privacy-bot** | Privacy engineer — data minimization, retention, third-party flows, deletion design |
+| **devops-bot** | DevOps / platform engineer — CI/CD, GitHub Actions, Docker, IaC, build systems |
+
+**Planning + review** — structuring work and synthesizing feedback:
+
+| Skill | What it does |
+|-------|-------------|
+| **scope-bot** | Product strategist — version scoping and roadmap cut decisions |
+| **plan-bot** | Engineering manager — turns locked scope into task breakdowns with sequencing and test plans |
+| **glue-bot** | Tech lead — synthesizes parallel specialist reviews into one unified decision |
+| **ui-bot** | UX reviewer + information architect — IA, layout, interaction design, usability heuristics |
+| **seo-bot** | Technical SEO engineer — structured data, programmatic SEO, AI search optimization |
+
+**Workflow + collaboration** — Claude-side workflow tools:
+
+| Skill | What it does |
+|-------|-------------|
+| **opie** | Claude power-user coach + setup maintainer — teaches collaboration techniques and drives setup changes |
+| **prompt-bot** | Routes prompt/skill/subagent authoring requests to the right authoring specialist |
+| **maestro** | Coordinates parallel Claude sessions across git worktrees with file ownership and merge planning |
 | **docs-bot** | Maintains project documentation optimized for Claude consumption |
-| **opie** | Claude power-user coach — teaches prompting techniques and workflow strategies |
 | **grill-me** | Stress-tests a plan through relentless one-at-a-time questioning |
 | **retro** | Quick retrospective — captures a mistake as a persistent feedback memory |
-| **brb** | Mid-session checkpoint — saves all accumulated context without wrapping up |
+| **brb** | Mid-session checkpoint — saves accumulated context without ending the session |
+
+**Authoring references** — for building your own prompts, skills, and subagents (current per Anthropic best practices):
+
+| Skill | What it does |
+|-------|-------------|
+| **prompt-authoring** | Reference for writing system prompts, persona definitions, and CLAUDE.md content |
+| **skill-authoring** | Reference for writing Claude Code SKILL.md files — frontmatter, progressive disclosure, body structure |
+| **subagent-authoring** | Reference for writing Claude Code subagent definitions in `.claude/agents/` |
 
 ### `commands/`
 
@@ -53,7 +84,6 @@ Workflow commands. Copy to `~/.claude/commands/`.
 |---------|-------------|
 | **start** | Session orientation — reads project state, sets focus, asks task type |
 | **gg** | Session wrap-up — updates focus, saves context, runs lint/tests, git status |
-| **review** | Reviews uncommitted changes for bugs, patterns, security, performance |
 | **tidy** | Surface cleanup — dead code, unused imports, inconsistent style |
 | **audit** | Deeper analysis — parallel agents check reuse, quality, efficiency |
 | **code-health-check** | Full codebase sweep against DRY, KISS, SOLID principles |
@@ -77,11 +107,12 @@ The "build your own" guides — explains the thinking behind each system so you 
 | Pattern | What it covers |
 |---------|---------------|
 | **focus-protocol.md** | FOCUS.md + stash + redirect protocol + hooks for maintaining focus |
-| **intensity-calibration.md** | How instruction tone affects Claude 4.6 behavior — and how to fix overtriggering |
+| **intensity-calibration.md** | How instruction tone affects Claude's behavior — and how to fix overtriggering |
 | **feedback-loop.md** | /retro → memory → behavioral change across sessions |
 | **docs-system.md** | The docs/claude/ structure, archive policy, and maintenance workflow |
 | **layered-hierarchy.md** | Global → workspace → project → skill, with deduplication |
 | **building-skills.md** | How to create effective skills with the layered prompt structure |
+| **claude-md-anatomy.md** | Anatomy of a working CLAUDE.md at global and workspace layers |
 
 ### `examples/`
 
@@ -100,7 +131,7 @@ There's no installer. Copy what you want:
 cp -r skills/eng-bot ~/.claude/skills/
 
 # Copy a command
-cp commands/review.md ~/.claude/commands/
+cp commands/audit.md ~/.claude/commands/
 
 # Copy hooks
 cp hooks/focus-check.sh ~/.claude/hooks/

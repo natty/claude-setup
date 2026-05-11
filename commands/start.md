@@ -17,6 +17,8 @@ Summarize concisely:
 
 If docs/claude/ doesn't exist, offer to run `/init-proj` to scaffold it.
 
-Check if any docs/claude/ files need trimming (see Archive policy in CLAUDE.md).
+Check if any docs/claude/ files need trimming (see ~/dev/CLAUDE.md Archive policy).
 
 Ask the user: "What kind of task is this? (investigation, bug fix, feature, refactor, exploratory)" — this sets scope expectations for the session.
+
+If FOCUS.md exists or was just created, ask: "Want a 30-minute focus nudge? (`/loop 30m` — I'll check in periodically to make sure we're on track.)" If yes, run `/loop 30m` to read FOCUS.md and ask "Still on track?" at each interval.

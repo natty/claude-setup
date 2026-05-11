@@ -1,29 +1,29 @@
 #!/bin/bash
-# Focus Protocol hook — reminds Claude of current focus when FOCUS.md exists.
+# ADHD Protocol hook — reminds Claude of current focus when FOCUS.md exists.
 # If no FOCUS.md but a roadmap exists, nudges to create one.
-# Fires on UserPromptSubmit (see settings-example.json).
+# Fires on UserPromptSubmit.
 
 FOCUS_FILE="FOCUS.md"
 ROADMAP_FILE="docs/claude/roadmap.md"
 
 if [ -f "$FOCUS_FILE" ]; then
   CONTENT=$(cat "$FOCUS_FILE")
-  STASH_COUNT=0
+  PARKING_COUNT=0
 
   # Count project stash items if it exists
   if [ -f "docs/claude/stash.md" ]; then
-    STASH_COUNT=$(sed '1,/^---$/d' "docs/claude/stash.md" 2>/dev/null | grep -c '[^ ]' || echo 0)
+    PARKING_COUNT=$(sed '1,/^---$/d' "docs/claude/stash.md" 2>/dev/null | grep -c '[^ ]' || echo 0)
   fi
 
   # Count global stash items
-  GLOBAL_STASH=0
-  GLOBAL_STASH_FILE="$HOME/claude-output/stash.md"
-  if [ -f "$GLOBAL_STASH_FILE" ]; then
-    GLOBAL_STASH=$(sed '1,/^---$/d' "$GLOBAL_STASH_FILE" 2>/dev/null | grep -c '[^ ]' || echo 0)
+  GLOBAL_PARKING=0
+  GLOBAL_LOT="$HOME/claude-output/stash.md"
+  if [ -f "$GLOBAL_LOT" ]; then
+    GLOBAL_PARKING=$(sed '1,/^---$/d' "$GLOBAL_LOT" 2>/dev/null | grep -c '[^ ]' || echo 0)
   fi
 
   cat <<EOF
-{"userMessage": "FOCUS PROTOCOL ACTIVE. Current FOCUS.md:\n${CONTENT}\n\nStash: ${STASH_COUNT} project items, ${GLOBAL_STASH} global items.\n\nRemember: if the user brings up an idea that isn't the current task, stash it (don't explore it) and redirect to the current focus. Only change focus if explicitly asked."}
+{"userMessage": "ADHD PROTOCOL ACTIVE. Current FOCUS.md:\n${CONTENT}\n\nStash: ${PARKING_COUNT} project items, ${GLOBAL_PARKING} global items.\n\nRemember: if the user brings up an idea that isn't the current task, stash it (don't explore it) and redirect to the current focus. Only change focus if explicitly asked."}
 EOF
 
 elif [ -f "$ROADMAP_FILE" ]; then

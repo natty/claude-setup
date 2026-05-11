@@ -1,10 +1,10 @@
-# Intensity Calibration (Claude 4.6)
+# Intensity Calibration
 
-How the tone and formatting of your instructions affects Claude's behavior. These findings are specific to Claude Opus 4.6 and Sonnet 4.6 — recalibrate when new models are released.
+How the tone and formatting of your instructions affects Claude's behavior. These findings describe current Claude (Opus 4.x and Sonnet 4.x families) — recalibrate when new model generations are released.
 
 ## The Problem
 
-Claude 4.6 is more proactive and responsive to system prompts than earlier models. This means aggressive instruction language causes overtriggering — Claude spends cognitive budget checking rules during routine tasks instead of doing the work.
+Modern Claude is proactive and responsive to system prompts. Aggressive instruction language causes overtriggering — Claude spends cognitive budget checking rules during routine tasks instead of doing the work.
 
 The most common symptom: Claude becomes hypervigilant, pausing to verify it isn't violating rules even when the current task has nothing to do with those rules.
 
@@ -43,7 +43,7 @@ Both versions convey the same rules. The second version produces better complian
 | "Never" → "Don't" | Same prohibition, lower activation energy. Claude follows it equally well. |
 | ALL CAPS in rules | Causes overtriggering when combined with bold or "Never." Bold alone is sufficient. |
 | Section headers like "Non-Negotiable" | Creates hypervigilance. "Ground Rules" conveys the same authority. |
-| "CRITICAL:", "IMPORTANT:", "YOU MUST" | Overtriggers on 4.6. Use calm, direct statements instead. |
+| "CRITICAL:", "IMPORTANT:", "YOU MUST" | Overtriggers. Use calm, direct statements instead. |
 | Reason + rule vs. bare rule | Rules with explanations ("Don't use mocks — they mask integration failures") produce better generalization than bare rules ("Don't use mocks"). |
 
 ### Guardrails deduplication
@@ -75,4 +75,4 @@ Additionally: [domain-specific rules only]
 2. **Check section headers.** Replace anything that reads as a threat level ("Non-Negotiable," "Hard Rules") with neutral headers ("Ground Rules," "Conventions").
 3. **Lead with principles, then list rules.** A one-line explanation of *why* these rules exist helps Claude generalize rather than memorize.
 4. **Check skills for duplication.** If your skills restate global rules, replace with a one-line reference.
-5. **Recalibrate on new models.** These findings are for 4.6. If a future model is less responsive to calm instructions, intensity may need to go back up.
+5. **Recalibrate on new models.** These findings describe current Claude. If a future model is less responsive to calm instructions, intensity may need to go back up.

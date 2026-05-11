@@ -8,7 +8,7 @@ Do each step ONCE, in order. Do not repeat or re-verify completed steps.
    - Ask: "Did you complete the current task?" (or determine from context if obvious).
    - If yes: increment the progress counter in FOCUS.md, mark the Claude Code task as completed, and ask what the next task is (propose one from the roadmap if available). Update FOCUS.md with the new task.
    - If no: leave FOCUS.md as-is. Note where things left off in session-handoff.md.
-   - Scan the conversation for any ideas or tangents that didn't get stashed. Add them to the appropriate stash file.
+   - Scan the conversation for any ideas or tangents that didn't get stashed. Add them to the appropriate stash.
    - Report: tasks completed this session, items stashed this session, current progress counter.
 
 2. **Run `/brb`** — this saves all session context to docs/claude/ (changelog, decisions, gotchas, plans, reference, roadmap). Pass along any $ARGUMENTS.

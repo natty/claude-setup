@@ -38,14 +38,18 @@ If $ARGUMENTS is provided, scope the cleanup to those files or directories only.
 - Overly complex logic that can be simplified without changing behavior
 - Inconsistent naming or style
 - Redundant comments
+- Stale comments or docstrings that describe old behavior after the code was changed
+- TODO/FIXME comments that reference completed work
 - Copy-pasted blocks that should be extracted (2+ copies = extract)
 - Unnecessary nesting
 - Magic numbers or strings
+- Hardcoded URLs, ports, or hostnames that should be config
 
 Collect all findings, then apply changes in one pass.
 
 ## Rules
 
+- **Chesterton's Fence applies to every deletion.** Before removing code that looks unused/dead/unnecessary, understand *why* it's there. Stale-looking code often encodes a real reason (historical bug, edge case, integration constraint). If you can't explain why it was there, don't delete it — flag it for review instead.
 - **Preserve all functionality.** Zero behavior changes.
 - **Do not refactor architecture.** Cosmetic cleanup, not redesign.
 - **Do not add features, tests, or dependencies.**

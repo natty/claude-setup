@@ -2,7 +2,8 @@
 name: grill-me
 description: Stress-test a plan or design through relentless one-at-a-time questioning until reaching shared understanding. Use when the user wants to pressure-test their thinking before committing to an approach.
 user-invocable: true
-disable-model-invocation: true
+disable-model-invocation: false
+claude-md-version: 2026-05-06
 ---
 
 <!-- Inspired by Matt Pocock's grill-me skill (MIT): https://github.com/mattpocock/skills -->
@@ -20,7 +21,7 @@ If a question can be answered by exploring the codebase, explore it yourself ins
 
 If a question surfaces an idea or tangent outside the current plan, park it and continue the grilling. Don't let me derail the session by chasing something shiny.
 
-When we reach shared understanding, summarize the settled decisions and offer to log them to the appropriate project documentation.
+When we reach shared understanding, summarize the settled decisions and offer to log them to the appropriate docs/claude/ file.
 
 **Watch yourself for:**
 - Asking multiple questions in one message — one at a time, always
